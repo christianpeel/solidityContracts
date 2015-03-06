@@ -1,0 +1,29 @@
+<html>
+<head>
+<script>
+var web3 = parent.web3;
+var theContract = web3.eth.contractFromAbi([
+   {
+      "constant" : true,
+      "inputs" : [],
+      "name" : "getx",
+      "outputs" : [
+         {
+            "name" : "r",
+            "type" : "uint256"
+         }
+      ],
+      "type" : "function"
+   }
+	]);
+</script>
+</head>
+<html>
+<body>
+	Hello World
+	<span id="x">Uninitialized</span>
+<script>
+	document.getElementById("x").innerHTML = theContract.getx();
+</script>
+</body>
+</html>

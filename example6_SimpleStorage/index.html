@@ -1,0 +1,27 @@
+<html>
+<head>
+<script>
+var web3 = parent.web3;
+var theContract = contracts.SimpleStorage.contract;
+	
+		function submitfun(){ theContract.set(document.getElementById("myform").value);}
+
+</script>
+</head>
+<body>
+	Stored in Contract: <span id="x">Uninitialized</span>
+	<br>
+	<form>
+		Integer to store:
+		<input id="myform" type="text" name="name">
+		<input id="submit" type="button" value="Submit" onclick="submitfun()">
+	</form>
+<script>
+	function update() { document.getElementById("x").innerHTML = theContract.get();}
+	function updateF() {
+		document.getElementById("frmForm").innerHTML = document.getElementById("myform").value;
+	}
+	update();
+</script>
+</body>
+</html>

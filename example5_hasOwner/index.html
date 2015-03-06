@@ -1,0 +1,19 @@
+<html>
+<head>
+<script>
+var web3 = parent.web3;
+var theContract = contracts.hasOwner.contract;
+</script>
+</head>
+<body>
+	Contract address: <span id="Addr">Uninitialized Bank addr</span><br>
+
+<script>
+    function update() {
+          document.getElementById("Addr").innerHTML = theContract.address;
+		}
+    update();
+
+</script>
+</body>
+</html>

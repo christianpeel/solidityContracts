@@ -1,0 +1,14 @@
+[
+   {
+      "constant" : true,
+      "inputs" : [],
+      "name" : "getx",
+      "outputs" : [
+         {
+            "name" : "r",
+            "type" : "uint256"
+         }
+      ],
+      "type" : "function"
+   }
+]

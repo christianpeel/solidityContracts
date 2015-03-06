@@ -1,0 +1,17 @@
+<head>
+<script>
+var web3 = parent.web3;
+
+</script>
+</head>
+
+<html>
+<body>
+<div>You have <span id="ether">?</span> Weis</div>
+<script>
+web3.eth.watch('pending').changed(function() {
+    var balance = web3.eth.balanceAt(web3.eth.coinbase);
+    document.getElementById("ether").innerText = web3.toDecimal(balance);
+  });
+</script>
+</body></html>

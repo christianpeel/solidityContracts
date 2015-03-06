@@ -1,0 +1,74 @@
+{
+	"applicationUrlEth": "",
+	"applicationUrlHttp": "",
+	"deploymentAddresses": [],
+	"files": [
+		"contracts.sol",
+		"index.html"
+	],
+	"packageBase64": "",
+	"packageHash": "",
+	"title": "BCU1_69",
+	"states": [
+		{
+			"balance": {
+				"unit": 18,
+				"value": "100000000000000000000000000"
+			},
+			"title": "Default",
+			"transactions": [
+				{
+					"functionId": "Config",
+					"gas": {
+						"value": "125000"
+					},
+					"gasPrice": {
+						"unit": 18,
+						"value": "10000000000000"
+					},
+					"parameters": {},
+					"stdContract": true,
+					"url": "qrc:///stdc/std.sol",
+					"value": {
+						"unit": 18,
+						"value": "100"
+					}
+				},
+				{
+					"functionId": "NameReg",
+					"gas": {
+						"value": "125000"
+					},
+					"gasPrice": {
+						"unit": 18,
+						"value": "10000000000000"
+					},
+					"parameters": {},
+					"stdContract": true,
+					"url": "qrc:///stdc/std.sol",
+					"value": {
+						"unit": 18,
+						"value": "100"
+					}
+				},
+				{
+					"contractId": "Contract",
+					"functionId": "Contract",
+					"gas": {
+						"value": "125000"
+					},
+					"gasPrice": {
+						"unit": 18,
+						"value": "10000000000000"
+					},
+					"parameters": {},
+					"value": {
+						"unit": 18,
+						"value": "100"
+					}
+				}
+			]
+		}
+	],
+	"defaultStateIndex": 0
+}

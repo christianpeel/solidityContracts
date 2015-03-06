@@ -1,0 +1,28 @@
+<html>
+<head>
+<script>
+	var web3 = parent.web3;
+	theContract=contracts["myContract"].contract;
+
+	function increment() {
+        var res = contracts["myContract"].contract.incr();
+	}
+
+</script>
+</head>
+<body>
+	Click the damn relaod button ^^^ to see the incremented number.<br>
+	Total
+	<span id="x">Uninitialized</span>
+	<button onclick="increment()">Increment</button>
+<script>
+	function update() { document.getElementById("x").innerHTML = theContract.getTotal();}
+	theContract.incremented().happened(update());
+//	web3.eth.watch('pending').changed(function() {
+//	    var total = theContract.getTotal();
+//	    document.getElementById("x").innerText = web3.toDecimal(total);
+//  });
+
+</script>
+</body>
+</html>
