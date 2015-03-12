@@ -3,7 +3,9 @@
 <script>
     var web3 = parent.web3;
     var theContract = contracts.bank.contract;
-	
+    function compoundInterest() {
+        theContract.compoundSavingsInterest();
+    }	
     function depositToSavings() {
 		var depVal = document.getElementById("savingsForm").value;
         theContract.deposit(depVal);
@@ -60,7 +62,7 @@
 		<input id="loanRateInput" type="text" name="name">%
         <button onclick="setLoanRate()">Set Interest Rate</button>
 		<span id="myLoanRate">myLoanRate</span><br>
-	<br>
+	<br><br><br><br><br>
 	My Ethereum address: <span id="myAddr">?</span><br>
 	My Ethereum balance: <span id="ether">?</span> Weis<br>
 	My Credit Score: <span id="creditScore">?</span><br>
@@ -75,10 +77,13 @@
         <button onclick="payLoanOff()">Pay Loan Off</button>
         <span id="myLoanVal">Uninitialized</span>
 	<br>
+        <button onclick="compoundInterest()">Compound the Interest</button>
+	<br><br>
 	Check Final Amount given initial loan of
 	    <input id="checkLoanForm" type="text" name="name">
         <button onclick="checkLoanFinal()">Check Final Amount</button>
         <span id="myCheckLoanVal">Uninitialized</span>
+	<br><br>
 <script>
 	web3.eth.watch('pending').changed(function() {
   		  var balance = web3.eth.balanceAt(web3.eth.coinbase);

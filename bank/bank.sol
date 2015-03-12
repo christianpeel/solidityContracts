@@ -4,11 +4,11 @@ contract bank {
     uint reserve; // Reserve = sum(savings)-sum(loans)
     uint reserveRatio; // Reserve ratio
     // Info about savers
-    uint saveRate; // 1+interest rate per block for savings in Q0.16
+    uint saveRate; // 1+interest rate per block for savings in fixed-point
     mapping (address => uint) saveBalances;
-    uint prevUpdateBlock; // Block number of last update block
+	mapping (address => uint) prevUpdateBlock; // Block number of last update block
     // Info about borrowers
-    uint loanRate; // 1+interest rate per block for loans in Q0.16
+    uint loanRate; // 1+interest rate per block for loans in fixed-point
     mapping (address => uint) loanBalances;
     mapping (address => uint) loanBlock; // Block when loan to be paid
     mapping (address => uint) creditScore;
@@ -63,6 +63,7 @@ contract bank {
 			msg.sender.send(amount);
             loanBalances[msg.sender] += finalAmount;
 			reserve-=amount;
+			loanBlock[msg.sender]+=numBlocks;
         } // maybe send an error
     }
     // Pay a loan off
@@ -70,7 +71,7 @@ contract bank {
         if (loanBalances[msg.sender] <= msg.value) {
             // some logic to actually take the money from the borrower,
             // and return any over-payment
-            if (loanBlock[msg.sender] == block.number) {
+            if (loanBlock[msg.sender] <= block.number) {
                 creditScore[msg.sender] += loanBalances[msg.sender];
             }
             loanBalances[msg.sender] = 0;
@@ -87,8 +88,11 @@ contract bank {
     }
 
     // compound savings on a regular basis. This means 
-//    function compoundSavings() {
-//    }
+    function compoundSavingsInterest() {
+		uint numBlocks = block.number - prevUpdateBlock[msg.sender];
+		saveBalances[msg.sender] = saveBalances[msg.sender]*calcInterest(saveRate, numBlocks)/8192;
+		prevUpdateBlock[msg.sender] = block.number;
+    }
 
     function queryLoanBalance() constant returns (uint balance) {
         return loanBalances[msg.sender]; }

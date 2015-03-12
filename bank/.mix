@@ -1,13 +1,9 @@
 {
-	"applicationUrlEth": "",
-	"applicationUrlHttp": "",
-	"deploymentAddresses": [],
+	"deploymentAddress": "",
 	"files": [
 		"bank.sol",
 		"index.html"
 	],
-	"packageBase64": "",
-	"packageHash": "",
 	"title": "bank",
 	"states": [
 		{
